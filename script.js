@@ -9,23 +9,18 @@ function getComputerChoice(){
         return "SCISSORS";
     }
 }
-console.log(getComputerChoice());
 
 function getHumanChoice(){
     let userChoice = prompt("Enter Your Choice");
 
    return userChoice.toUpperCase();
 }
-console.log(getHumanChoice());
 
-
-
-
+let humanScore = 0;
+let computerScore = 0;
 
 function playGame(){
-    let humanScore = 0;
-    let computerScore = 0;
-    
+
     function playRound(humanChoice, computerChoice){
         if(humanChoice === computerChoice){
             return "It is a tie";
@@ -39,13 +34,38 @@ function playGame(){
             return `You lose! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${computerChoice} beats ${humanChoice}.`
         }
     }
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
+    //Round 1
+    const humanSelection1 = getHumanChoice();
+    const computerSelection1 = getComputerChoice();
+    console.log(playRound(humanSelection1, computerSelection1));
 
-    console.log(playRound(humanSelection, computerSelection));
+    //Round 2
+     const humanSelection2 = getHumanChoice();
+     const computerSelection2 = getComputerChoice();
+     console.log(playRound(humanSelection2, computerSelection2));
+
+    //Round 3
+    const humanSelection3 = getHumanChoice();
+    const computerSelection3 = getComputerChoice();
+    console.log(playRound(humanSelection3, computerSelection3));
+
+    //Round 4
+     const humanSelection4 = getHumanChoice();
+     const computerSelection4 = getComputerChoice();
+     console.log(playRound(humanSelection4, computerSelection4));
+
+    //Round 5
+    const humanSelection5 = getHumanChoice();
+    const computerSelection5 = getComputerChoice();
+    console.log(playRound(humanSelection5, computerSelection5));
+
+    console.log(`Your total score is: ${humanScore} and computer's score is: ${computerScore}.`)
+
+    if(humanScore > computerScore){
+        alert("Hurray! You won the game");
+    } else{
+        alert("Sorry you lost! Computer Won");
+    }
 }
-playGame();
-playGame();
-playGame();
-playGame();
+
 playGame();
