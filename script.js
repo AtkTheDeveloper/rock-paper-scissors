@@ -11,7 +11,7 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    let userChoice = prompt("Enter Your Choice");
+    let userChoice = prompt(`Enter either rock, paper or scissors`);
 
    return userChoice.toUpperCase();
 }
@@ -23,15 +23,15 @@ function playGame(){
 
     function playRound(humanChoice, computerChoice){
         if(humanChoice === computerChoice){
-            return "It is a tie";
+            return alert("It is a tie");
         } 
         else if(humanChoice === "PAPER" && computerChoice === "ROCK" || humanChoice === "ROCK" && computerChoice === "SCISSORS" || humanChoice === "SCISSORS" && computerChoice === "PAPER"){
             humanScore++;
-            return `You win! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${humanChoice} beats ${computerChoice}.`;
+            return alert(`You win! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${humanChoice} beats ${computerChoice}.`);
         }
         else{
             computerScore++;
-            return `You lose! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${computerChoice} beats ${humanChoice}.`
+            return alert(`You lose! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${computerChoice} beats ${humanChoice}.`);
         }
     }
     //Round 1
@@ -59,7 +59,7 @@ function playGame(){
     const computerSelection5 = getComputerChoice();
     console.log(playRound(humanSelection5, computerSelection5));
 
-    console.log(`Your total score is: ${humanScore} and computer's score is: ${computerScore}.`)
+    alert(`Your total score is: ${humanScore} and computer's score is: ${computerScore}.`)
 
     if(humanScore > computerScore){
         alert("Hurray! You won the game");
