@@ -10,3 +10,11 @@ function getComputerChoice(){
     }
 }
 console.log(getComputerChoice());
+
+function getHumanChoice(){
+    let userChoice = prompt("Enter Your Choice");
+
+   return userChoice.toUpperCase();
+}
+console.log(getHumanChoice());
+
