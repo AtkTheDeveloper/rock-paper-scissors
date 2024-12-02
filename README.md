@@ -12,3 +12,6 @@ This project is written in <em><strong>vanilla javascript</strong></em> and is p
 ## How To Open The Chrome Developer Console(Shortcut)
 * Windows/Linux - <b>Ctrl + Shift + J</b>
 * MacOs - <b>Cmd + Option + J</b>
+
+## Live Preview
+https://atkthedeveloper.github.io/rock-paper-scissors/
