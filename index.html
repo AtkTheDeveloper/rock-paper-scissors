@@ -4,13 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin - Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <button>ROCK</button>
-    <button>PAPER</button>
-    <button>SCISSORS</button>
+    <div class="roundsWon">
+        <ul class="playerRoundsWon">
+            <li class="starWon"><img src="assests/star.svg"></li>
+            <li class="starWon"><img src="assests/star.svg"></li>
+            <li class="starWon"><img src="assests/star.svg"></li>
+            <li class="starWon"><img src="assests/star.svg"></li>
+            <li class="starWon"><img src="assests/star.svg"></li>
+        </ul>
+    
+        <ul class="computerRoundsWon">
+            <li class="starWon"><img src="assests/star.svg"></li>
+            <li class="starWon"><img src="assests/star.svg"></li>
+            <li class="starWon"><img src="assests/star.svg"></li>
+            <li class="starWon"><img src="assests/star.svg"></li>
+            <li class="starWon"><img src="assests/star.svg"></li>
+        </ul>
+    </div>
+    
+    <div class="roundOutcome">
+        <h1 id="roundWinText">You Won!</h1>
+        <h1 id="roundLoseText">You Lose!</h1>
+        <h1 id="roundDrawText">Draw!</h1>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="gameOutcome">
+        <h1 id="gameWinText">You Won The Game!</h1>
+        <h1 id="gameLoseText">You Lost The Game!</h1>
+    </div>
+
+    <ul id="rps-buttons">
+        <li class="rps-btn" id="btn-rock">Rock</li>
+        <li class="rps-btn" id="btn-paper">Paper</li>
+        <li class="rps-btn" id="btn-scissors">Scissors</li>
+        <li class="rps-btn" id="btn-reset">Reset</li>
+    </ul>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
