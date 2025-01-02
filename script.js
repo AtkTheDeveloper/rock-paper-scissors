@@ -39,33 +39,33 @@ function playGame(){
     const computerSelection1 = getComputerChoice();
     console.log(playRound(humanSelection1, computerSelection1));
 
-    //Round 2
-     const humanSelection2 = getHumanChoice();
-     const computerSelection2 = getComputerChoice();
-     console.log(playRound(humanSelection2, computerSelection2));
+    // //Round 2
+    //  const humanSelection2 = getHumanChoice();
+    //  const computerSelection2 = getComputerChoice();
+    //  console.log(playRound(humanSelection2, computerSelection2));
 
-    //Round 3
-    const humanSelection3 = getHumanChoice();
-    const computerSelection3 = getComputerChoice();
-    console.log(playRound(humanSelection3, computerSelection3));
+    // //Round 3
+    // const humanSelection3 = getHumanChoice();
+    // const computerSelection3 = getComputerChoice();
+    // console.log(playRound(humanSelection3, computerSelection3));
 
-    //Round 4
-     const humanSelection4 = getHumanChoice();
-     const computerSelection4 = getComputerChoice();
-     console.log(playRound(humanSelection4, computerSelection4));
+    // //Round 4
+    //  const humanSelection4 = getHumanChoice();
+    //  const computerSelection4 = getComputerChoice();
+    //  console.log(playRound(humanSelection4, computerSelection4));
 
-    //Round 5
-    const humanSelection5 = getHumanChoice();
-    const computerSelection5 = getComputerChoice();
-    console.log(playRound(humanSelection5, computerSelection5));
+    // //Round 5
+    // const humanSelection5 = getHumanChoice();
+    // const computerSelection5 = getComputerChoice();
+    // console.log(playRound(humanSelection5, computerSelection5));
 
-    alert(`Your total score is: ${humanScore} and computer's score is: ${computerScore}.`)
+    // alert(`Your total score is: ${humanScore} and computer's score is: ${computerScore}.`)
 
-    if(humanScore > computerScore){
-        alert("Hurray! You won the game");
-    } else{
-        alert("Sorry you lost! Computer Won");
-    }
+    // if(humanScore > computerScore){
+    //     alert("Hurray! You won the game");
+    // } else{
+    //     alert("Sorry you lost! Computer Won");
+    // }
 }
 
 playGame();
