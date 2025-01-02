@@ -17,64 +17,51 @@ function getHumanChoice(choice){
     const buttons = document.querySelectorAll('button');
     for(const button of buttons){
     button.addEventListener("click", (e) => {
-        let userChoice = e.target.textContent;
+        const userChoice = e.target.textContent;
         choice(userChoice);
-    })
+    }, {once: true});
 }
 }
 
 let humanScore = 0;
 let computerScore = 0;
+let round = 1;
+
+function playRound(humanChoice, computerChoice){
+    if(humanChoice === computerChoice){
+        div.textContent = `Round ${round}: It is a tie!`;
+    } 
+    else if(humanChoice === "PAPER" && computerChoice === "ROCK" || humanChoice === "ROCK" && computerChoice === "SCISSORS" || humanChoice === "SCISSORS" && computerChoice === "PAPER"){
+        humanScore++;
+        div.textContent = `Round ${round}: You Win`;
+    }
+    else{
+        computerScore++;
+        div.textContent = `Round ${round}: You Lose!`;
+    }
+}
 
 function playGame(){
 
-    function playRound(humanChoice, computerChoice){
-        if(humanChoice === computerChoice){
-            div.textContent = "It is a tie";
-        } 
-        else if(humanChoice === "PAPER" && computerChoice === "ROCK" || humanChoice === "ROCK" && computerChoice === "SCISSORS" || humanChoice === "SCISSORS" && computerChoice === "PAPER"){
-            humanScore++;
-            div.textContent = `You win! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${humanChoice} beats ${computerChoice}.`;
+    if(round > 5){
+        if(humanScore > computerScore){
+            div.textContent = `Your total score is: ${humanScore} and computer's score is: ${computerScore}. Hurray! You won the game`;
+        } else{
+            div.textContent = `Your total score is: ${humanScore} and computer's score is: ${computerScore}. Sorry you lost! Computer Won`;
         }
-        else{
-            computerScore++;
-            div.textContent = `You lose! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${computerChoice} beats ${humanChoice}.`;
-        }
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => button.disabled = true);
+        return;
     }
+
+
     //Round 1
     getHumanChoice((userChoice) => {
-        const humanSelection1 = userChoice;
-        const computerSelection1 = getComputerChoice();
-        console.log(playRound(humanSelection1, computerSelection1));
+        const computerSelection = getComputerChoice();
+        playRound(userChoice, computerSelection);
+        round++;
+        playGame();
     });
-
-    // //Round 2
-    //  const humanSelection2 = getHumanChoice();
-    //  const computerSelection2 = getComputerChoice();
-    //  console.log(playRound(humanSelection2, computerSelection2));
-
-    // //Round 3
-    // const humanSelection3 = getHumanChoice();
-    // const computerSelection3 = getComputerChoice();
-    // console.log(playRound(humanSelection3, computerSelection3));
-
-    // //Round 4
-    //  const humanSelection4 = getHumanChoice();
-    //  const computerSelection4 = getComputerChoice();
-    //  console.log(playRound(humanSelection4, computerSelection4));
-
-    // //Round 5
-    // const humanSelection5 = getHumanChoice();
-    // const computerSelection5 = getComputerChoice();
-    // console.log(playRound(humanSelection5, computerSelection5));
-
-    // alert(`Your total score is: ${humanScore} and computer's score is: ${computerScore}.`)
-
-    // if(humanScore > computerScore){
-    //     alert("Hurray! You won the game");
-    // } else{
-    //     alert("Sorry you lost! Computer Won");
-    // }
 }
 
 playGame();
