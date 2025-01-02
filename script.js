@@ -31,7 +31,7 @@ document.body.appendChild(renderer.domElement);
 
 const geometryWall = new THREE.PlaneGeometry(30, 20);
 const materialWall = new THREE.MeshBasicMaterial({
-  color: 0x9fc6fc,
+  color: "black",
   side: THREE.DoubleSide,
 });
 const wall = new THREE.Mesh(geometryWall, materialWall);
@@ -39,7 +39,7 @@ scene.add(wall);
 
 const geometryFloor = new THREE.PlaneGeometry(30, 20);
 const materialFloor = new THREE.MeshBasicMaterial({
-  color: 0x89aad9,
+  color: "black",
   side: THREE.DoubleSide,
 });
 const floor = new THREE.Mesh(geometryFloor, materialFloor);
@@ -80,28 +80,28 @@ const sounds = [];
 let winGrunt, loseGrunt, shakeWoosh, roundWin;
 const manager = new THREE.LoadingManager();
 const audioLoader = new THREE.AudioLoader(manager);
-const mp3s = ["gruntWin", "gruntLose", "ShakeWoosh", "roundWin"];
+const mp3s = ["draw", "lose", "ShakeWoosh", "win"];
 const listener = new THREE.AudioListener();
 camera.add(listener);
 
 mp3s.forEach((name) => {
   const sound = new THREE.Audio(listener);
   sound.name = name;
-  if (name === "gruntWin") {
+  if (name === "draw") {
     winGrunt = sound;
   }
-  if (name === "gruntLose") {
+  if (name === "lose") {
     loseGrunt = sound;
   }
   if (name === "ShakeWoosh") {
     shakeWoosh = sound;
   }
-  if (name === "roundWin") {
+  if (name === "win") {
     roundWin = sound;
   }
 
   sounds.push(sound);
-  audioLoader.load(`./sfx/${name}.mp3`, function (buffer) {
+  audioLoader.load(`./assests/audios/${name}.mp3`, function (buffer) {
     sound.setBuffer(buffer);
   });
 });
