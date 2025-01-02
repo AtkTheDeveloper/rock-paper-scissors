@@ -1,3 +1,6 @@
+const div = document.createElement('div');
+document.body.appendChild(div);
+
 function getComputerChoice(){
     let random = (Math.floor(Math.random() * 3));
 
@@ -10,10 +13,14 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    let userChoice = prompt(`Enter either rock, paper or scissors`);
-
-   return userChoice.toUpperCase();
+function getHumanChoice(choice){
+    const buttons = document.querySelectorAll('button');
+    for(const button of buttons){
+    button.addEventListener("click", (e) => {
+        let userChoice = e.target.textContent;
+        choice(userChoice);
+    })
+}
 }
 
 let humanScore = 0;
@@ -23,21 +30,23 @@ function playGame(){
 
     function playRound(humanChoice, computerChoice){
         if(humanChoice === computerChoice){
-            return alert("It is a tie");
+            div.textContent = "It is a tie";
         } 
         else if(humanChoice === "PAPER" && computerChoice === "ROCK" || humanChoice === "ROCK" && computerChoice === "SCISSORS" || humanChoice === "SCISSORS" && computerChoice === "PAPER"){
             humanScore++;
-            return alert(`You win! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${humanChoice} beats ${computerChoice}.`);
+            div.textContent = `You win! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${humanChoice} beats ${computerChoice}.`;
         }
         else{
             computerScore++;
-            return alert(`You lose! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${computerChoice} beats ${humanChoice}.`);
+            div.textContent = `You lose! You chose: ${humanChoice} and Computer chose: ${computerChoice}. ${computerChoice} beats ${humanChoice}.`;
         }
     }
     //Round 1
-    const humanSelection1 = getHumanChoice();
-    const computerSelection1 = getComputerChoice();
-    console.log(playRound(humanSelection1, computerSelection1));
+    getHumanChoice((userChoice) => {
+        const humanSelection1 = userChoice;
+        const computerSelection1 = getComputerChoice();
+        console.log(playRound(humanSelection1, computerSelection1));
+    });
 
     // //Round 2
     //  const humanSelection2 = getHumanChoice();
