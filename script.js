@@ -1,9 +1,3 @@
-//TODO
-//make the buttons prettier, put in a picture of the action in the btn
-// 3d text?
-
-//how to get the hands closer on small screens
-
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OutlinePass } from "three/examples/jsm/postprocessing/OutlinePass.js";
