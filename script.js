@@ -11,7 +11,7 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    let userChoice = prompt(`Enter rock, paper or scissors`);
+    let userChoice = prompt(`Enter either rock, paper or scissors`);
 
    return userChoice.toUpperCase();
 }
