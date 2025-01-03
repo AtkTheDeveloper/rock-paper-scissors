@@ -104,7 +104,8 @@ mp3s.forEach((name) => {
   audioLoader.load(`./assests/audios/${name}.mp3`, function (buffer) {
     sound.setBuffer(buffer);
   });
-});
+}); 
+
 
 let composer; // Effect composer for post-processing
 const playerOutlinePass = new OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), scene, camera);
@@ -360,18 +361,7 @@ function onClick(event) {
 }
 
 function initializeGame() {
-  // Play round audio before allowing user to choose
-  if (!roundAudioPLayed && currentRound <= maxRounds) {
-    roundAudio[currentRound - 1].play();
-    roundAudio[currentRound - 1].addEventListener('ended', () => {
-      enableUserChoice();
-    });
-  } else {
-    enableUserChoice();
-  }
-}
 
-function enableUserChoice() {
   computerChoice = getComputerChoice();
 
   shakeWoosh.stop();
@@ -411,26 +401,7 @@ function enableUserChoice() {
   });
 }
 
-let currentRound = 1; // Round counter
-const maxRounds = 5; // Maximum number of rounds
-const roundAudio = [
-  new Audio("./assests/audios/round1.mp3"),
-  new Audio("./assests/audios/round2.mp3"),
-  new Audio("./assests/audios/round3.mp3"),
-  new Audio("./assests/audios/round4.mp3"),
-  new Audio("./assests/audios/final-round.mp3") 
-];
-
-roundAudio.forEach(audio => audio.loop = false);
-
-let roundAudioPLayed = false;
-
 function playRound(playerChoice, computerChoice) {
-  if(!roundAudioPLayed && currentRound <= maxRounds) {
-    if (currentRound > 1) {
-      roundAudio[currentRound - 1].play();
-    }
-  }
   if (playerChoice === computerChoice) {
     document.getElementById("roundWinText").style.display = "none";
     document.getElementById("roundLoseText").style.display = "none";
@@ -445,6 +416,7 @@ function playRound(playerChoice, computerChoice) {
           draw.classList.remove("animate__slideOutLeft");
       });
   }, 1500);
+     
     winGrunt.stop();
     winGrunt.play();
   } else if (
@@ -453,7 +425,7 @@ function playRound(playerChoice, computerChoice) {
     (playerChoice === SCISSORS && computerChoice === PAPER)
   ) {
     document.getElementById("roundWinText").style.display = "block";
-    
+
     const win = document.getElementById("roundWinText");
     win.style.display = "block";
     setTimeout(() => {
@@ -466,14 +438,15 @@ function playRound(playerChoice, computerChoice) {
 
     document.getElementById("roundLoseText").style.display = "none";
     document.getElementById("roundDrawText").style.display = "none";
-    winGrunt.stop();
-    winGrunt.play();
+    // winGrunt.stop();
+    // winGrunt.play();
     roundWin.stop();
     roundWin.play();
     showWinEffect();
     increaseScore("player");
   } else {
     document.getElementById("roundWinText").style.display = "none";
+    document.getElementById("roundLoseText").style.display = "block";
 
     const lost = document.getElementById("roundLoseText");
     lost.style.display = "block";
@@ -492,7 +465,6 @@ function playRound(playerChoice, computerChoice) {
     loseGrunt.play();
     increaseScore("computer");
   }
-  currentRound++;
 }
 
 function getComputerChoice() {
