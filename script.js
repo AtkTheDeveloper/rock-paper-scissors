@@ -360,7 +360,18 @@ function onClick(event) {
 }
 
 function initializeGame() {
+  // Play round audio before allowing user to choose
+  if (!roundAudioPLayed && currentRound <= maxRounds) {
+    roundAudio[currentRound - 1].play();
+    roundAudio[currentRound - 1].addEventListener('ended', () => {
+      enableUserChoice();
+    });
+  } else {
+    enableUserChoice();
+  }
+}
 
+function enableUserChoice() {
   computerChoice = getComputerChoice();
 
   shakeWoosh.stop();
@@ -399,7 +410,6 @@ function initializeGame() {
     isGameRunning = true;
   });
 }
-
 
 let currentRound = 1; // Round counter
 const maxRounds = 5; // Maximum number of rounds
