@@ -400,7 +400,27 @@ function initializeGame() {
   });
 }
 
+
+let currentRound = 1; // Round counter
+const maxRounds = 5; // Maximum number of rounds
+const roundAudio = [
+  new Audio("./assests/audios/round1.mp3"),
+  new Audio("./assests/audios/round2.mp3"),
+  new Audio("./assests/audios/round3.mp3"),
+  new Audio("./assests/audios/round4.mp3"),
+  new Audio("./assests/audios/final-round.mp3") 
+];
+
+roundAudio.forEach(audio => audio.loop = false);
+
+let roundAudioPLayed = false;
+
 function playRound(playerChoice, computerChoice) {
+  if(!roundAudioPLayed && currentRound <= maxRounds) {
+    if (currentRound > 1) {
+      roundAudio[currentRound - 1].play();
+    }
+  }
   if (playerChoice === computerChoice) {
     document.getElementById("roundWinText").style.display = "none";
     document.getElementById("roundLoseText").style.display = "none";
@@ -462,6 +482,7 @@ function playRound(playerChoice, computerChoice) {
     loseGrunt.play();
     increaseScore("computer");
   }
+  currentRound++;
 }
 
 function getComputerChoice() {
