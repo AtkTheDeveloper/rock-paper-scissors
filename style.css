@@ -11,6 +11,7 @@ body {
     display: flex;
     padding: 0;
     margin-bottom: 13%;
+    cursor: pointer;
 }
 
 .rps-btn {
@@ -75,14 +76,26 @@ body {
 
 #roundWinText {
     display: none;
+    background-color: blue;
+    border-radius: 5px;
+    width: 500px;
+    text-align: center;
 }
 
 #roundLoseText {
     display: none;
+    background-color: rgb(255, 0, 0);
+    border-radius: 5px;
+    width: 500px;
+    text-align: center;
 }
 
 #roundDrawText {
     display: none;
+    background-color: rgb(255, 251, 0);
+    border-radius: 5px;
+    width: 500px;
+    text-align: center;
 }
 
 @media only screen and (max-width: 600px) {

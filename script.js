@@ -405,6 +405,16 @@ function playRound(playerChoice, computerChoice) {
     document.getElementById("roundWinText").style.display = "none";
     document.getElementById("roundLoseText").style.display = "none";
     document.getElementById("roundDrawText").style.display = "block";
+
+    const draw = document.getElementById("roundDrawText");
+    draw.style.display = "block";
+    setTimeout(() => {
+      draw.classList.add("animate__slideOutLeft");
+      draw.addEventListener("animationend", () => {
+          draw.style.display = "none";
+          draw.classList.remove("animate__slideOutLeft");
+      });
+  }, 1500);
     winGrunt.stop();
     winGrunt.play();
   } else if (
@@ -413,6 +423,17 @@ function playRound(playerChoice, computerChoice) {
     (playerChoice === SCISSORS && computerChoice === PAPER)
   ) {
     document.getElementById("roundWinText").style.display = "block";
+    
+    const win = document.getElementById("roundWinText");
+    win.style.display = "block";
+    setTimeout(() => {
+      win.classList.add("animate__slideOutLeft");
+      win.addEventListener("animationend", () => {
+          win.style.display = "none";
+          win.classList.remove("animate__slideOutLeft");
+      });
+  }, 1500);
+
     document.getElementById("roundLoseText").style.display = "none";
     document.getElementById("roundDrawText").style.display = "none";
     winGrunt.stop();
@@ -423,7 +444,17 @@ function playRound(playerChoice, computerChoice) {
     increaseScore("player");
   } else {
     document.getElementById("roundWinText").style.display = "none";
-    document.getElementById("roundLoseText").style.display = "block";
+
+    const lost = document.getElementById("roundLoseText");
+    lost.style.display = "block";
+    setTimeout(() => {
+      lost.classList.add("animate__slideOutLeft");
+      lost.addEventListener("animationend", () => {
+          lost.style.display = "none";
+          lost.classList.remove("animate__slideOutLeft");
+      });
+  }, 1500);
+  
     document.getElementById("roundDrawText").style.display = "none";
     showDamageEffect();
     screenShake(camera, 0.3, 0.3);
